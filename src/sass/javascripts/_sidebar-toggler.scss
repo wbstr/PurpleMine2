@@ -8,12 +8,12 @@
 
     #sidebar {
         @if $fixed-layout {
-            opacity: 1;
             will-change: margin, opacity;
-            @include transition(margin .5s, opacity .5s);
+            transition: margin .5s, opacity .5s;
+            opacity: 1;
         } @else {
             will-change: margin;
-            @include transition(margin .5s);
+            transition: margin .5s;
         }
 
         &.sidebar-hiding {
@@ -33,18 +33,17 @@
     }
 
     .sidebar-toggler {
-        @include user-select(none);
-
         display: block;
         position: absolute;
         top: $toggler-position-v;
+        user-select: none;
 
         @if $use-font-awesome {
             @extend %fa-icon;
             color: $gray-light;
             line-height: 1;
 
-            &:before {
+            &::before {
                 margin-right: 0;
             }
 
@@ -71,7 +70,7 @@
             left: $toggler-position-h;
 
             @if $use-font-awesome {
-                &:before {
+                &::before {
                     content: $fa-var-caret-square-o-left;
                 }
             } @else {
@@ -81,7 +80,7 @@
             right: $toggler-position-h;
 
             @if $use-font-awesome {
-                &:before {
+                &::before {
                     content: $fa-var-caret-square-o-right;
                 }
             } @else {
@@ -92,7 +91,7 @@
         &.sidebar-hidden {
             @if $sidebar-position == "left" {
                 @if $use-font-awesome {
-                    &:before {
+                    &::before {
                         content: $fa-var-caret-square-o-right;
                     }
                 } @else {
@@ -100,7 +99,7 @@
                 }
             } @else {
                 @if $use-font-awesome {
-                    &:before {
+                    &::before {
                         content: $fa-var-caret-square-o-left;
                     }
                 } @else {
