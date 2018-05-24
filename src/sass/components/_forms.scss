@@ -572,7 +572,9 @@ label[for=closed] {
 //
 
 .check_box_group {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   overflow-y: auto;
 
   label {
